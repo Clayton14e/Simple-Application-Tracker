@@ -1,25 +1,5 @@
 [
     {
-        "name": "TUG",
-        "position": "TDL Test Engineer",
-        "status": "Rejected"
-    },
-    {
-        "name": "PeopleLogic",
-        "position": "Quality Assurance Engineer",
-        "status": "Rejected"
-    },
-    {
-        "name": "Evona",
-        "position": "Test Engineer",
-        "status": "Rejected"
-    },
-    {
-        "name": "MobileAppsUS",
-        "position": "SDET",
-        "status": "interview"
-    },
-    {
         "name": "Test Company",
         "position": "Test Position",
         "status": "Rejected"
