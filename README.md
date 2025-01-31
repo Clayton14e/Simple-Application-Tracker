@@ -5,6 +5,7 @@ To run the program:
 1. Download the project contents
 2. Open Command Line
 3. Navigate to project location on local drive (cd ~/*project_location*)
-4. Type "python ApplicationTracker.py" into your terminal and press enter
+4. Type "pip install tabulate" into your terminal and press enter
+5. Type "python ApplicationTracker.py" into your terminal and press enter
 
 Enter Data as prompted, program will allow for export to csv upon completing entries.
