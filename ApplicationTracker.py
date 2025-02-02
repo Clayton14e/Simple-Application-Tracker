@@ -1,32 +1,30 @@
 import json
 import csv
 from tabulate import tabulate
-
-def add_data_to_json(file_path, new_data):
+# opening Data file def
+def load_json(file_path):
     try:
-        # Load existing data from the JSON file
         with open(file_path, 'r') as file:
-            data = json.load(file)
+            return json.load(file)
     except (FileNotFoundError, json.JSONDecodeError):
-        # If file doesn't exist or is empty, start with an empty list
-        data = []
+        return []
+# saving Data file def
+def save_json(file_path, data):
+    with open(file_path, 'w') as file:
+        json.dump(data, file, indent=4)
+# adding to Data file
+def add_data_to_json(file_path, new_data):
+    data = load_json(file_path)
     
-    # Check if entry exists by name and update if found
     for entry in data:
         if entry["name"].lower() == new_data["name"].lower():
             entry.update(new_data)
             break
     else:
-        # Append new data if name not found
         data.append(new_data)
     
-    # Write updated data back to the JSON file
-    with open(file_path, 'w') as file:
-        json.dump(data, file, indent=4)
-    
-    # Display updated JSON data as a table
+    save_json(file_path, data)
     print(tabulate(data, headers="keys", tablefmt="grid"))
-    
     return data
 
 def export_to_csv(data, file_path):
@@ -41,27 +39,56 @@ def export_to_csv(data, file_path):
         dict_writer.writerows(data)
     print(f"Data exported to {file_path}")
 
-data_list = []
-while True:
-    # Collect user input
-    name = input("Enter Company: ")
-    position = input("Enter Position: ")
-    status = input("Enter Status: ")
+def search_entry_by_name(file_path, name):
+    data = load_json(file_path)
+    for entry in data:
+        if entry["name"].lower() == name.lower():
+            print(tabulate([entry], headers="keys", tablefmt="grid"))
+            return
+    print("Entry not found.")
 
-    new_entry = {
-        "name": name,
-        "position": position,
-        "status": status
-    }
+def main():
+    file_path = "data.json"
+    while True:
+        choice = input("Choose an option: (1) Add Entry (2) View Data Table (3) Search Entry by Name (4) Exit: ").strip()
+        
+        if choice == '1':
+            name = input("Enter name: ")
+            position = input("Enter position: ")
+            selected = input("Is selected? (yes/no): ").strip().lower() == 'yes'
+            
+            if not selected:
+                status = input("Choose status (rejected/no response/new entry): ").strip().lower()
+            else:
+                status = input("Choose status (offer/interview/rejected): ").strip().lower()
+            
+            new_entry = {
+                "name": name,
+                "position": position,
+                "status": status
+            }
+            add_data_to_json(file_path, new_entry)
+        
+        elif choice == '2':
+            data = load_json(file_path)
+            if data:
+                print(tabulate(data, headers="keys", tablefmt="grid"))
+            else:
+                print("No data available.")
+        
+        elif choice == '3':
+            name = input("Enter name to search: ")
+            search_entry_by_name(file_path, name)
+        
+        elif choice == '4':
+            break
+        
+        else:
+            print("Invalid choice. Please try again.")
 
-    data_list = add_data_to_json("data.json", new_entry)
-    
-    # Ask if user wants to add more data
-    another = input("Do you want to add another entry? (yes/no): ").strip().lower()
-    if another != 'yes':
-        break
+    export_choice = input("Do you want to export the data to a spreadsheet? (yes/no): ").strip().lower()
+    if export_choice == 'yes':
+        export_to_csv(load_json(file_path), "data.csv")
 
-# Ask if user wants to export to CSV
-export_choice = input("Do you want to export the data to a spreadsheet? (yes/no): ").strip().lower()
-if export_choice == 'yes':
-    export_to_csv(data_list, "data.csv")
+if __name__ == "__main__":
+    main()
