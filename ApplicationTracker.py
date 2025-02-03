@@ -1,7 +1,10 @@
+import datetime
 import json
 import csv
+import matplotlib.pyplot as plt
+from collections import Counter
 from tabulate import tabulate
-import datetime
+
 
 # Opening Data file definition
 def load_json(file_path):
@@ -63,14 +66,22 @@ def count_entries_by_day(file_path, day):
     print("No Entries found.")
 
 # Display Histograph with Data
-def display_histograph():
-    print("data")
+def display_histogram(file_path):
+    data = load_json(file_path)
+    weekday_counts = count_weekdays(data)
+    weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    count_list = [weekday_counts.get(day, 0) for day in weekdays]
+    plt.hist(count_list)
+    plt.show()
+
+def count_weekdays(data):   
+    return dict(Counter(entry["day"] for entry in data))
 
 # Main
 def main():
     file_path = "data.json"
     while True:
-        choice = input("Choose an option: (1) Add Entry (2) View Data Table (3) Search Entry by Name (4) Exit: ").strip()
+        choice = input("Choose an option: (1) Add Entry (2) View Data Table (3) Search Entry by Name (4) Display Activity Graph (5) Exit: ").strip()
         
         # Add Entry
         if choice == '1':
@@ -122,10 +133,14 @@ def main():
             name = input("Enter name to search: ")
             search_entry_by_name(file_path, name)
         
-        # Exit
+        # Display Activity Graph
         elif choice == '4':
-            break
+            display_histogram(file_path)
         
+        # Exit
+        elif choice == '5':
+            break
+          
         # Catch invalid input
         else:
             print("Invalid choice. Please try again.")

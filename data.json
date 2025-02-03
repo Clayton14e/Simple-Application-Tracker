@@ -1,3 +1,20 @@
 [
-
+    {
+        "name": "Test1",
+        "position": "test",
+        "status": "new entry",
+        "day": "Monday"
+    },
+    {
+        "name": "Test2",
+        "position": "test",
+        "status": "rejected",
+        "day": "Monday"
+    },
+    {
+        "name": "Test3",
+        "position": "test",
+        "status": "interview",
+        "day": "Tuesday"
+    }
 ]
