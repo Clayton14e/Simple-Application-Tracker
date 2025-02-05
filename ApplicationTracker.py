@@ -53,6 +53,18 @@ def search_entry_by_name(file_path, name):
     for entry in data:
         if entry["name"].lower() == name.lower():
             print(tabulate([entry], headers="keys", tablefmt="grid"))
+            update_entry =  input("Change status?(y/n): ")
+            if update_entry == 'y':
+                new_status = input("New Status(rejected/interview/offer): ")
+                entry["status"] = new_status
+                
+                with open(file_path, 'w') as file:
+                    json.dump(data, file, indent=4)
+                
+                print("Entry updated successfully.")
+                 
+            elif update_entry == 'n':
+                continue
             return
     print("Entry not found.")
 
