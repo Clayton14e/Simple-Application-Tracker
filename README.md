@@ -1,5 +1,7 @@
 ## INTENDED USE DISCLAIMER ##
-Personal project used to collect and analyze job application data. Currently running on a CLI using simple Python with json data.
+Personal project used to collect and analyze job application data. Currently running on a CLI using simple Python with json data. 
+
+❗ All data provided for this project is test sample data - To create your own, simply open the data.json file in a text editor and delete the contents, then save. ❗
 
 # EDIT 2/3/2024 - Additional steps included
 To run the program:
