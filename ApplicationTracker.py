@@ -77,13 +77,20 @@ def count_entries_by_day(file_path, day):
             return
     print("No Entries found.")
 
-# Display Histograph with Data
-def display_histogram(file_path):
+# Display Bar Graph with Data
+def display_bargraph(file_path):
     data = load_json(file_path)
     weekday_counts = count_weekdays(data)
     weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     count_list = [weekday_counts.get(day, 0) for day in weekdays]
-    plt.hist(count_list)
+    # Graph Styling
+    font1 = {'family':'sans-serif','color':'MidnightBlue','size':12}
+    plt.bar(weekdays, count_list, color = "DarkOrange")
+    plt.ylabel("Response Count", font1)
+    plt.xlabel("Entry Day", font1)
+    plt.yticks(fontsize=8, color='darkgray')
+    plt.xticks(fontsize=8, color='darkgray')
+    # Display
     plt.show()
 
 def count_weekdays(data):   
@@ -147,7 +154,7 @@ def main():
         
         # Display Activity Graph
         elif choice == '4':
-            display_histogram(file_path)
+            display_bargraph(file_path)
         
         # Exit
         elif choice == '5':

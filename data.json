@@ -16,5 +16,95 @@
         "position": "test",
         "status": "interview",
         "day": "Tuesday"
+    },
+    {
+        "name": "TechCorp",
+        "position": "Software Engineer",
+        "status": "new entry",
+        "day": "Monday"
+    },
+    {
+        "name": "DataSolutions",
+        "position": "Data Analyst",
+        "status": "interview",
+        "day": "Tuesday"
+    },
+    {
+        "name": "WebInnovators",
+        "position": "Frontend Developer",
+        "status": "offer",
+        "day": "Wednesday"
+    },
+    {
+        "name": "AI Ventures",
+        "position": "Machine Learning Engineer",
+        "status": "rejected",
+        "day": "Thursday"
+    },
+    {
+        "name": "CloudNet",
+        "position": "DevOps Engineer",
+        "status": "new entry",
+        "day": "Friday"
+    },
+    {
+        "name": "NextGen Robotics",
+        "position": "AI Researcher",
+        "status": "interview",
+        "day": "Monday"
+    },
+    {
+        "name": "CyberShield",
+        "position": "Cybersecurity Analyst",
+        "status": "offer",
+        "day": "Tuesday"
+    },
+    {
+        "name": "Quantum Dynamics",
+        "position": "Quantum Computing Engineer",
+        "status": "new entry",
+        "day": "Wednesday"
+    },
+    {
+        "name": "EcoTech Solutions",
+        "position": "Sustainability Consultant",
+        "status": "rejected",
+        "day": "Thursday"
+    },
+    {
+        "name": "NeuralSync",
+        "position": "Neuroscience Engineer",
+        "status": "interview",
+        "day": "Friday"
+    },
+    {
+        "name": "ByteWorks",
+        "position": "Full Stack Developer",
+        "status": "new entry",
+        "day": "Saturday"
+    },
+    {
+        "name": "StellarSpace",
+        "position": "Aerospace Engineer",
+        "status": "offer",
+        "day": "Sunday"
+    },
+    {
+        "name": "CryptoHive",
+        "position": "Blockchain Developer",
+        "status": "new entry",
+        "day": "Monday"
+    },
+    {
+        "name": "GigaSoft",
+        "position": "Software Architect",
+        "status": "rejected",
+        "day": "Tuesday"
+    },
+    {
+        "name": "CloudNine",
+        "position": "Cloud Engineer",
+        "status": "interview",
+        "day": "Wednesday"
     }
 ]
