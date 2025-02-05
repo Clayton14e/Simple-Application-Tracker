@@ -11,3 +11,6 @@ To run the program:
 6. Type "python ApplicationTracker.py" into your terminal and press enter
 
 Enter Data as prompted, program will allow for export to csv upon completing entries. You can additionally review your day-to-day activity data now.
+![ApplicationDummyData](https://github.com/user-attachments/assets/6a2335d6-2cdb-408c-8b7d-179fe81e4d2b)
+
+
