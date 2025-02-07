@@ -78,23 +78,44 @@ def count_entries_by_day(file_path, day):
     print("No Entries found.")
 
 # Display Bar Graph with Data
-def display_bargraph(file_path):
+def display_bargraph(file_path, selection):
     data = load_json(file_path)
-    weekday_counts = count_weekdays(data)
-    weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-    count_list = [weekday_counts.get(day, 0) for day in weekdays]
-    # Graph Styling
-    font1 = {'family':'sans-serif','color':'MidnightBlue','size':12}
-    plt.bar(weekdays, count_list, color = "DarkOrange")
-    plt.ylabel("Response Count", font1)
-    plt.xlabel("Entry Day", font1)
-    plt.yticks(fontsize=8, color='darkgray')
-    plt.xticks(fontsize=8, color='darkgray')
-    # Display
-    plt.show()
+    # Display Graph for Response Days
+    if selection == '1':
+       
+        weekday_counts = count_weekdays(data)
+        weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+        count_list = [weekday_counts.get(day, 0) for day in weekdays]
+        # Graph Styling
+        font1 = {'family':'sans-serif','color':'MidnightBlue','size':12}
+        plt.bar(weekdays, count_list, color = "DarkOrange")
+        plt.ylabel("Response Count", font1)
+        plt.xlabel("Entry Day", font1)
+        plt.yticks(fontsize=8, color='darkgray')
+        plt.xticks(fontsize=8, color='darkgray')
+        # Display
+        plt.show()
+    # Display Graph for Response Status
+    elif selection == '2':
+       
+        status_counts = count_statuses(data)
+        statuses = ['interview', 'offer', 'rejected', 'new entry']
+        count_list = [status_counts.get(status, 0) for status in statuses]
+        # Graph Styling
+        font1 = {'family':'sans-serif','color':'MidnightBlue','size':12}
+        plt.bar(statuses, count_list, color = "MidnightBlue")
+        plt.ylabel("Response Count", font1)
+        plt.xlabel("Entry Day", font1)
+        plt.yticks(fontsize=8, color='darkgray')
+        plt.xticks(fontsize=8, color='darkgray')
+        # Display
+        plt.show()
 
 def count_weekdays(data):   
     return dict(Counter(entry["day"] for entry in data))
+
+def count_statuses(data):   
+    return dict(Counter(entry["status"] for entry in data))
 
 # Main
 def main():
@@ -154,7 +175,8 @@ def main():
         
         # Display Activity Graph
         elif choice == '4':
-            display_bargraph(file_path)
+            select = input("Data to display (1) Response Day (2) Response Type: ")
+            display_bargraph(file_path, select)
         
         # Exit
         elif choice == '5':
